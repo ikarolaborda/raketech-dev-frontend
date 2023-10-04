@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  frontend:
+    container_name: raketech-frontend
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - '3000:3000'
+      - '4040:4040'
+    volumes:
+      - '.:/app'
+    networks:
+      - raketech-dev
+    tty: true
+    command: tail -f /dev/null
+
+networks:
+  raketech-dev:
+    external: true
